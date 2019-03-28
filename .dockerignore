@@ -1,0 +1,5 @@
+Dockerfile
+test.sh
+test-buildkit.sh
+REPORT_BUILDKIT.txt
+REPORT.txt

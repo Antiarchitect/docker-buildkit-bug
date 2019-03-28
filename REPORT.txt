@@ -1,0 +1,45 @@
+++ dirname ./test.sh
++ BASEDIR=.
++ cd .
++ echo 'Hi again!'
++ docker build . -t buildkitbug:test --progress plain
+Sending build context to Docker daemon  41.47kB
+Step 1/4 : FROM alpine:3.9
+3.9: Pulling from library/alpine
+8e402f1a9c57: Already exists 
+Digest: sha256:644fcb1a676b5165371437feaa922943aaf7afcfa8bfee4472f6860aad1ef2a0
+Status: Downloaded newer image for alpine:3.9
+ ---> 5cb3aa00f899
+Step 2/4 : WORKDIR /app
+ ---> Running in 616484057c92
+Removing intermediate container 616484057c92
+ ---> a8f14293dac7
+Step 3/4 : ADD 1.txt 2.txt ./
+ ---> 46d6478a0c73
+Step 4/4 : RUN set -ex && cat ./2.txt
+ ---> Running in 23de23393ede
++ cat ./2.txt
+Hi again!
+Removing intermediate container 23de23393ede
+ ---> 5b3b837799b7
+Successfully built 5b3b837799b7
+Successfully tagged buildkitbug:test
++ echo 'Hello from bug also!'
++ docker build . -t buildkitbug:test --progress plain
+Sending build context to Docker daemon  41.47kB
+Step 1/4 : FROM alpine:3.9
+ ---> 5cb3aa00f899
+Step 2/4 : WORKDIR /app
+ ---> Using cache
+ ---> a8f14293dac7
+Step 3/4 : ADD 1.txt 2.txt ./
+ ---> 69cc1d1aefc7
+Step 4/4 : RUN set -ex && cat ./2.txt
+ ---> Running in a5a992a5a48f
++ cat ./2.txt
+Hi again!
+Hello from bug also!
+Removing intermediate container a5a992a5a48f
+ ---> d25230a32543
+Successfully built d25230a32543
+Successfully tagged buildkitbug:test

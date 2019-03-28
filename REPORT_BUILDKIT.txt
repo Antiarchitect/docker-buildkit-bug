@@ -1,0 +1,202 @@
+++ dirname ./test-buildkit.sh
++ BASEDIR=.
++ cd .
++ echo 'Hi again!'
++ DOCKER_BUILDKIT=1
++ docker build . -t buildkitbug:test --progress plain
+
+#1 [internal] load build definition from Dockerfile
+#1       digest: sha256:a16d3b67c705b6a940b2542c24aefbb7e35a5e4ae54f400f9d6d98dcf8183a84
+#1         name: "[internal] load build definition from Dockerfile"
+#1      started: 2019-03-28 11:16:27.240579443 +0000 UTC
+#1    completed: 2019-03-28 11:16:27.240828661 +0000 UTC
+#1     duration: 249.218µs
+#1      started: 2019-03-28 11:16:27.241122803 +0000 UTC
+#1    completed: 2019-03-28 11:16:27.321397704 +0000 UTC
+#1     duration: 80.274901ms
+#1 transferring dockerfile: 177B done
+
+
+#2 [internal] load .dockerignore
+#2       digest: sha256:8905dc545a1ec0a6eb188ba5eddcdd872de83c120fdd81c9464c71d315e2e75b
+#2         name: "[internal] load .dockerignore"
+#2      started: 2019-03-28 11:16:27.240548058 +0000 UTC
+#2    completed: 2019-03-28 11:16:27.240831236 +0000 UTC
+#2     duration: 283.178µs
+#2      started: 2019-03-28 11:16:27.241044414 +0000 UTC
+#2 transferring context: 117B done
+#2    completed: 2019-03-28 11:16:27.351815446 +0000 UTC
+#2     duration: 110.771032ms
+
+
+#3 [internal] load metadata for docker.io/library/alpine:3.9
+#3       digest: sha256:ec93a49eb23b9623df10a5a3541fc53b7d70e09f2d53052e596d5a76f9c76e34
+#3         name: "[internal] load metadata for docker.io/library/alpine:3.9"
+#3      started: 2019-03-28 11:16:27.373483971 +0000 UTC
+#3    completed: 2019-03-28 11:16:28.680727766 +0000 UTC
+#3     duration: 1.307243795s
+
+
+#4 [internal] helper image for file operations
+#4       digest: sha256:e4c43493b1bb2320466c52248e886014710025b273f224bb96a23b8fb7a1d193
+#4         name: "[internal] helper image for file operations"
+#4      started: 2019-03-28 11:16:28.682410774 +0000 UTC
+#4    completed: 2019-03-28 11:16:28.682963358 +0000 UTC
+#4     duration: 552.584µs
+
+
+#5 [1/3] FROM docker.io/library/alpine:3.9@sha256:644fcb1a676b5165371437fea...
+#5       digest: sha256:dba4599ba3da1e49a9da8d67921a811e90882363a32cb1ee18389722ce3b007b
+#5         name: "[1/3] FROM docker.io/library/alpine:3.9@sha256:644fcb1a676b5165371437feaa922943aaf7afcfa8bfee4472f6860aad1ef2a0"
+#5      started: 2019-03-28 11:16:28.682419384 +0000 UTC
+#5    completed: 2019-03-28 11:16:28.682757473 +0000 UTC
+#5     duration: 338.089µs
+
+
+#6 [internal] load build context
+#6       digest: sha256:a1386caf0f7e69bbe06673f56cca0a24a3bee0483f07e8744a7dfe51d80aef47
+#6         name: "[internal] load build context"
+#6      started: 2019-03-28 11:16:28.682374237 +0000 UTC
+#6    completed: 2019-03-28 11:16:28.682499498 +0000 UTC
+#6     duration: 125.261µs
+#6      started: 2019-03-28 11:16:28.684153196 +0000 UTC
+#6 transferring context: 198B done
+#6    completed: 2019-03-28 11:16:28.792568597 +0000 UTC
+#6     duration: 108.415401ms
+
+
+#4 [internal] helper image for file operations
+#4      started: 2019-03-28 11:16:28.796991625 +0000 UTC
+#4       cached: true
+#4    completed: 2019-03-28 11:16:28.797032772 +0000 UTC
+#4     duration: 41.147µs
+
+
+#5 [1/3] FROM docker.io/library/alpine:3.9@sha256:644fcb1a676b5165371437fea...
+#5      started: 2019-03-28 11:16:28.796957958 +0000 UTC
+#5    completed: 2019-03-28 11:16:28.796988672 +0000 UTC
+#5     duration: 30.714µs
+#5       cached: true
+
+
+#7 [2/3] ADD 1.txt 2.txt ./
+#7       digest: sha256:e88750627b218d900a43b074a3b5d2c3dde7169bb7891a82954b6994fb6153d0
+#7         name: "[2/3] ADD 1.txt 2.txt ./"
+#7      started: 2019-03-28 11:16:28.797099859 +0000 UTC
+#7    completed: 2019-03-28 11:16:29.308219395 +0000 UTC
+#7     duration: 511.119536ms
+
+
+#8 [3/3] RUN set -ex && cat ./2.txt
+#8       digest: sha256:f80b02d2b80cf9bb62413b6f265fc4e8d2c0d8a06712b3bfc9c1205128f6015d
+#8         name: "[3/3] RUN set -ex && cat ./2.txt"
+#8      started: 2019-03-28 11:16:29.319610584 +0000 UTC
+#8 0.384 + cat ./2.txt
+#8 0.385 Hi again!
+#8    completed: 2019-03-28 11:16:29.784691697 +0000 UTC
+#8     duration: 465.081113ms
+
+
+#9 exporting to image
+#9       digest: sha256:371c95e33685312e1a451e17ba6c48cc53c2dedb6f0017efbede297535f5cb72
+#9         name: "exporting to image"
+#9      started: 2019-03-28 11:16:29.791767506 +0000 UTC
+#9 exporting layers
+#9 exporting layers 0.2s done
+#9 writing image sha256:1489012f0d9aa165af409af763c602f223279d49a24ee4be0098dc2e6787aeed 0.1s done
+#9 naming to docker.io/library/buildkitbug:test
+#9    completed: 2019-03-28 11:16:30.096770211 +0000 UTC
+#9     duration: 305.002705ms
+#9 naming to docker.io/library/buildkitbug:test done
+
++ echo 'Hello from bug also!'
++ DOCKER_BUILDKIT=1
++ docker build . -t buildkitbug:test --progress plain
+
+#1 [internal] load .dockerignore
+#1       digest: sha256:7fba7a4afef6de37d9603f24cecb8e57cf0498424c8c1ef43c90aa81b8eec567
+#1         name: "[internal] load .dockerignore"
+#1      started: 2019-03-28 11:16:30.13599248 +0000 UTC
+#1    completed: 2019-03-28 11:16:30.136032852 +0000 UTC
+#1     duration: 40.372µs
+#1      started: 2019-03-28 11:16:30.136099339 +0000 UTC
+#1    completed: 2019-03-28 11:16:30.375486192 +0000 UTC
+#1     duration: 239.386853ms
+#1 transferring context: 93B done
+
+
+#2 [internal] load build definition from Dockerfile
+#2       digest: sha256:a26cb836e7d7676210870363bf4b2650adac211c28a05a95b118836025bb7bc5
+#2         name: "[internal] load build definition from Dockerfile"
+#2      started: 2019-03-28 11:16:30.135969326 +0000 UTC
+#2    completed: 2019-03-28 11:16:30.136009982 +0000 UTC
+#2     duration: 40.656µs
+#2      started: 2019-03-28 11:16:30.136156628 +0000 UTC
+#2    completed: 2019-03-28 11:16:30.39054551 +0000 UTC
+#2     duration: 254.388882ms
+#2 transferring dockerfile: 96B done
+
+
+#3 [internal] load metadata for docker.io/library/alpine:3.9
+#3       digest: sha256:ec93a49eb23b9623df10a5a3541fc53b7d70e09f2d53052e596d5a76f9c76e34
+#3         name: "[internal] load metadata for docker.io/library/alpine:3.9"
+#3      started: 2019-03-28 11:16:30.397089346 +0000 UTC
+#3    completed: 2019-03-28 11:16:30.982733729 +0000 UTC
+#3     duration: 585.644383ms
+
+
+#4 [internal] helper image for file operations
+#4       digest: sha256:e4c43493b1bb2320466c52248e886014710025b273f224bb96a23b8fb7a1d193
+#4         name: "[internal] helper image for file operations"
+#4      started: 2019-03-28 11:16:30.983898504 +0000 UTC
+#4    completed: 2019-03-28 11:16:30.984278383 +0000 UTC
+#4     duration: 379.879µs
+
+
+#6 [internal] load build context
+#6       digest: sha256:6ce6429353290a2d313820ac15a4ace3a42920a48d9db16b5a34c3efca3cfe2e
+#6         name: "[internal] load build context"
+#6      started: 2019-03-28 11:16:30.9838188 +0000 UTC
+#6    completed: 2019-03-28 11:16:30.983933794 +0000 UTC
+#6     duration: 114.994µs
+#6      started: 2019-03-28 11:16:30.984724382 +0000 UTC
+#6    completed: 2019-03-28 11:16:31.005902276 +0000 UTC
+#6     duration: 21.177894ms
+#6 transferring context: 209B done
+
+
+#5 [1/3] FROM docker.io/library/alpine:3.9@sha256:644fcb1a676b5165371437fea...
+#5       digest: sha256:dba4599ba3da1e49a9da8d67921a811e90882363a32cb1ee18389722ce3b007b
+#5         name: "[1/3] FROM docker.io/library/alpine:3.9@sha256:644fcb1a676b5165371437feaa922943aaf7afcfa8bfee4472f6860aad1ef2a0"
+#5      started: 2019-03-28 11:16:30.983936344 +0000 UTC
+#5    completed: 2019-03-28 11:16:30.984395999 +0000 UTC
+#5     duration: 459.655µs
+
+
+#7 [2/3] ADD 1.txt 2.txt ./
+#7       digest: sha256:277c751e58f9773a21654b314274578fed610a903c304f2f0ab071b11022b466
+#7         name: "[2/3] ADD 1.txt 2.txt ./"
+#7      started: 2019-03-28 11:16:31.009816875 +0000 UTC
+#7    completed: 2019-03-28 11:16:31.009816875 +0000 UTC
+#7     duration: 0s
+#7       cached: true
+
+
+#8 [3/3] RUN set -ex && cat ./2.txt
+#8       digest: sha256:a988d9da9b5ca52174703ae2f24e38ddb2b570d90efe2713678c1e87382c0ede
+#8         name: "[3/3] RUN set -ex && cat ./2.txt"
+#8      started: 2019-03-28 11:16:31.009816875 +0000 UTC
+#8    completed: 2019-03-28 11:16:31.009839871 +0000 UTC
+#8     duration: 22.996µs
+#8       cached: true
+
+
+#9 exporting to image
+#9       digest: sha256:9617372ee3da8a66ea5c5bd3a3fdd05a357f8bf72e631add378dcfd0f74f1b35
+#9         name: "exporting to image"
+#9      started: 2019-03-28 11:16:31.009875889 +0000 UTC
+#9 exporting layers done
+#9    completed: 2019-03-28 11:16:31.022835199 +0000 UTC
+#9     duration: 12.95931ms
+#9 writing image sha256:ef330cf69a35bedc3dba8ab3eb4d7d5a2c8131c54690388d94a720a9feb80f20 done
+#9 naming to docker.io/library/buildkitbug:test done
